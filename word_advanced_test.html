@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Avanzato Microsoft Word</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .question-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question-block h3 {
+            color: #2b5876;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .option {
+            display: block;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .result {
+            display: none;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result.excellent {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .result.good {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .result.pass {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        .result.fail {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+        
+        .score-details {
+            margin-top: 15px;
+            font-size: 16px;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Test Avanzato Microsoft Word</h1>
+            <p>30 domande | 1 punto per risposta corretta | Livello Avanzato</p>
+        </div>
+        
+        <div class="content">
+            <form id="quizForm">
+                <div class="question-block">
+                    <h3>1. Quale combinazione di tasti permette di aprire la finestra di dialogo "Vai a"?</h3>
+                    <label class="option"><input type="radio" name="q1" value="a"> Alt + G</label>
+                    <label class="option"><input type="radio" name="q1" value="b"> Ctrl + G</label>
+                    <label class="option"><input type="radio" name="q1" value="c"> F5</label>
+                    <label class="option"><input type="radio" name="q1" value="d"> Ctrl + F5</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>2. Qual è la funzione della combinazione Ctrl + Shift + F3?</h3>
+                    <label class="option"><input type="radio" name="q2" value="a"> Inserisce un segnalibro</label>
+                    <label class="option"><input type="radio" name="q2" value="b"> Taglia il contenuto negli Appunti Chiodino</label>
+                    <label class="option"><input type="radio" name="q2" value="c"> Apre il pannello degli stili</label>
+                    <label class="option"><input type="radio" name="q2" value="d"> Inserisce un campo automatico</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>3. Quale campo codice viene utilizzato per creare un indice analitico?</h3>
+                    <label class="option"><input type="radio" name="q3" value="a"> { TOC }</label>
+                    <label class="option"><input type="radio" name="q3" value="b"> { INDEX }</label>
+                    <label class="option"><input type="radio" name="q3" value="c"> { REF }</label>
+                    <label class="option"><input type="radio" name="q3" value="d"> { XE }</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>4. Quale opzione di Stampa unione permette di filtrare i destinatari?</h3>
+                    <label class="option"><input type="radio" name="q4" value="a"> Seleziona destinatari</label>
+                    <label class="option"><input type="radio" name="q4" value="b"> Modifica elenco destinatari</label>
+                    <label class="option"><input type="radio" name="q4" value="c"> Inserisci campo unione</label>
+                    <label class="option"><input type="radio" name="q4" value="d"> Anteprima risultati</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>5. Quale comando permette di confrontare due versioni di un documento?</h3>
+                    <label class="option"><input type="radio" name="q5" value="a"> Revisione > Confronta</label>
+                    <label class="option"><input type="radio" name="q5" value="b"> Visualizza > Confronta</label>
+                    <label class="option"><input type="radio" name="q5" value="c"> File > Confronta versioni</label>
+                    <label class="option"><input type="radio" name="q5" value="d"> Riferimenti > Confronta</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>6. Qual è l'estensione di un modello di Word con macro attivate?</h3>
+                    <label class="option"><input type="radio" name="q6" value="a"> .dotx</label>
+                    <label class="option"><input type="radio" name="q6" value="b"> .docm</label>
+                    <label class="option"><input type="radio" name="q6" value="c"> .dotm</label>
+                    <label class="option"><input type="radio" name="q6" value="d"> .docx</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>7. Quale codice campo inserisce il numero totale di pagine?</h3>
+                    <label class="option"><input type="radio" name="q7" value="a"> { PAGE }</label>
+                    <label class="option"><input type="radio" name="q7" value="b"> { PAGENUM }</label>
+                    <label class="option"><input type="radio" name="q7" value="c"> { NUMPAGES }</label>
+                    <label class="option"><input type="radio" name="q7" value="d"> { TOTALPAGES }</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>8. Quale tasto consente di visualizzare/nascondere i codici di campo?</h3>
+                    <label class="option"><input type="radio" name="q8" value="a"> F9</label>
+                    <label class="option"><input type="radio" name="q8" value="b"> Alt + F9</label>
+                    <label class="option"><input type="radio" name="q8" value="c"> Ctrl + F9</label>
+                    <label class="option"><input type="radio" name="q8" value="d"> Shift + F9</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>9. Quale strumento permette di proteggere un documento limitando le modifiche?</h3>
+                    <label class="option"><input type="radio" name="q9" value="a"> File > Informazioni > Proteggi documento</label>
+                    <label class="option"><input type="radio" name="q9" value="b"> Revisione > Limita modifica</label>
+                    <label class="option"><input type="radio" name="q9" value="c"> Sviluppo > Proteggi</label>
+                    <label class="option"><input type="radio" name="q9" value="d"> Home > Protezione</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>10. Quale combinazione di tasti apre la finestra Macro?</h3>
+                    <label class="option"><input type="radio" name="q10" value="a"> Alt + F11</label>
+                    <label class="option"><input type="radio" name="q10" value="b"> Ctrl + F8</label>
+                    <label class="option"><input type="radio" name="q10" value="c"> Alt + F8</label>
+                    <label class="option"><input type="radio" name="q10" value="d"> Ctrl + M</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>11. Quale comando permette di creare una didascalia automatica?</h3>
+                    <label class="option"><input type="radio" name="q11" value="a"> Inserisci > Didascalia</label>
+                    <label class="option"><input type="radio" name="q11" value="b"> Layout > Didascalia</label>
+                    <label class="option"><input type="radio" name="q11" value="c"> Riferimenti > Inserisci didascalia</label>
+                    <label class="option"><input type="radio" name="q11" value="d"> Progettazione > Didascalia</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>12. Quale visualizzazione mostra contemporaneamente più pagine affiancate?</h3>
+                    <label class="option"><input type="radio" name="q12" value="a"> Visualizzazione Layout di stampa</label>
+                    <label class="option"><input type="radio" name="q12" value="b"> Visualizzazione Struttura</label>
+                    <label class="option"><input type="radio" name="q12" value="c"> Visualizzazione Più pagine</label>
+                    <label class="option"><input type="radio" name="q12" value="d"> Visualizzazione Lettura</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>13. Quale comando consente di suddividere un documento in più file?</h3>
+                    <label class="option"><input type="radio" name="q13" value="a"> Non esiste una funzione nativa, serve una macro</label>
+                    <label class="option"><input type="radio" name="q13" value="b"> File > Dividi documento</label>
+                    <label class="option"><input type="radio" name="q13" value="c"> Layout > Interruzioni > Documento</label>
+                    <label class="option"><input type="radio" name="q13" value="d"> Revisione > Dividi</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>14. Quale formato preserva meglio la formattazione per la condivisione?</h3>
+                    <label class="option"><input type="radio" name="q14" value="a"> .rtf</label>
+                    <label class="option"><input type="radio" name="q14" value="b"> .txt</label>
+                    <label class="option"><input type="radio" name="q14" value="c"> .pdf</label>
+                    <label class="option"><input type="radio" name="q14" value="d"> .odt</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>15. Come si crea un riferimento incrociato a un titolo?</h3>
+                    <label class="option"><input type="radio" name="q15" value="a"> Inserisci > Collegamenti > Segnalibro</label>
+                    <label class="option"><input type="radio" name="q15" value="b"> Riferimenti > Riferimento incrociato</label>
+                    <label class="option"><input type="radio" name="q15" value="c"> Home > Riferimenti</label>
+                    <label class="option"><input type="radio" name="q15" value="d"> Layout > Collegamenti</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>16. Quale linguaggio si usa per le macro in Word?</h3>
+                    <label class="option"><input type="radio" name="q16" value="a"> JavaScript</label>
+                    <label class="option"><input type="radio" name="q16" value="b"> Python</label>
+                    <label class="option"><input type="radio" name="q16" value="c"> VBA (Visual Basic for Applications)</label>
+                    <label class="option"><input type="radio" name="q16" value="d"> C#</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>17. Quale opzione permette di accettare automaticamente tutte le revisioni?</h3>
+                    <label class="option"><input type="radio" name="q17" value="a"> Revisione > Accetta > Accetta tutte le modifiche</label>
+                    <label class="option"><input type="radio" name="q17" value="b"> File > Accetta revisioni</label>
+                    <label class="option"><input type="radio" name="q17" value="c"> Home > Accetta modifiche</label>
+                    <label class="option"><input type="radio" name="q17" value="d"> Visualizza > Revisioni > Accetta</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>18. Quale strumento consente di creare un sommario personalizzato?</h3>
+                    <label class="option"><input type="radio" name="q18" value="a"> Inserisci > Indice</label>
+                    <label class="option"><input type="radio" name="q18" value="b"> Layout > Sommario</label>
+                    <label class="option"><input type="radio" name="q18" value="c"> Riferimenti > Sommario > Sommario personalizzato</label>
+                    <label class="option"><input type="radio" name="q18" value="d"> Home > Indice personalizzato</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>19. Quale comando inserisce una sezione con numerazione pagine indipendente?</h3>
+                    <label class="option"><input type="radio" name="q19" value="a"> Inserisci > Interruzione di sezione</label>
+                    <label class="option"><input type="radio" name="q19" value="b"> Layout > Interruzioni > Pagina successiva</label>
+                    <label class="option"><input type="radio" name="q19" value="c"> Home > Interruzione</label>
+                    <label class="option"><input type="radio" name="q19" value="d"> Progettazione > Sezione</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>20. Come si applica uno stile rapido solo al paragrafo corrente?</h3>
+                    <label class="option"><input type="radio" name="q20" value="a"> Selezionare il testo e cliccare sullo stile</label>
+                    <label class="option"><input type="radio" name="q20" value="b"> Posizionare il cursore nel paragrafo e cliccare sullo stile</label>
+                    <label class="option"><input type="radio" name="q20" value="c"> Fare doppio clic sullo stile</label>
+                    <label class="option"><input type="radio" name="q20" value="d"> Trascinare lo stile sul paragrafo</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>21. Quale combinazione salva il documento con un nuovo nome?</h3>
+                    <label class="option"><input type="radio" name="q21" value="a"> Ctrl + S</label>
+                    <label class="option"><input type="radio" name="q21" value="b"> F12</label>
+                    <label class="option"><input type="radio" name="q21" value="c"> Ctrl + Shift + S</label>
+                    <label class="option"><input type="radio" name="q21" value="d"> Alt + S</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>22. Quale opzione permette di incorporare i font nel documento?</h3>
+                    <label class="option"><input type="radio" name="q22" value="a"> Home > Font > Incorpora</label>
+                    <label class="option"><input type="radio" name="q22" value="b"> File > Opzioni > Salvataggio > Incorpora caratteri</label>
+                    <label class="option"><input type="radio" name="q22" value="c"> Progettazione > Caratteri > Incorpora</label>
+                    <label class="option"><input type="radio" name="q22" value="d"> Layout > Font incorporati</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>23. Quale campo permette di inserire la data di ultima modifica?</h3>
+                    <label class="option"><input type="radio" name="q23" value="a"> { DATE }</label>
+                    <label class="option"><input type="radio" name="q23" value="b"> { SAVEDATE }</label>
+                    <label class="option"><input type="radio" name="q23" value="c"> { TIME }</label>
+                    <label class="option"><input type="radio" name="q23" value="d"> { PRINTDATE }</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>24. Quale strumento permette di ripristinare versioni precedenti non salvate?</h3>
+                    <label class="option"><input type="radio" name="q24" value="a"> File > Cronologia versioni</label>
+                    <label class="option"><input type="radio" name="q24" value="b"> File > Informazioni > Gestisci documento</label>
+                    <label class="option"><input type="radio" name="q24" value="c"> Revisione > Versioni precedenti</label>
+                    <label class="option"><input type="radio" name="q24" value="d"> Home > Ripristina</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>25. Come si blocca un campo per impedirne l'aggiornamento?</h3>
+                    <label class="option"><input type="radio" name="q25" value="a"> Fare clic destro > Blocca campo</label>
+                    <label class="option"><input type="radio" name="q25" value="b"> Ctrl + F11</label>
+                    <label class="option"><input type="radio" name="q25" value="c"> Ctrl + Shift + F11</label>
+                    <label class="option"><input type="radio" name="q25" value="d"> Alt + F11</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>26. Quale opzione permette di visualizzare i metadati del documento?</h3>
+                    <label class="option"><input type="radio" name="q26" value="a"> Revisione > Proprietà</label>
+                    <label class="option"><input type="radio" name="q26" value="b"> Home > Informazioni documento</label>
+                    <label class="option"><input type="radio" name="q26" value="c"> File > Informazioni > Proprietà</label>
+                    <label class="option"><input type="radio" name="q26" value="d"> Layout > Metadati</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>27. Come si crea una tabella di figure?</h3>
+                    <label class="option"><input type="radio" name="q27" value="a"> Inserisci > Tabella figure</label>
+                    <label class="option"><input type="radio" name="q27" value="b"> Riferimenti > Inserisci tabella delle figure</label>
+                    <label class="option"><input type="radio" name="q27" value="c"> Layout > Figure</label>
+                    <label class="option"><input type="radio" name="q27" value="d"> Home > Indice figure</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>28. Quale combinazione permette di selezionare tutto il documento?</h3>
+                    <label class="option"><input type="radio" name="q28" value="a"> Ctrl + E</label>
+                    <label class="option"><input type="radio" name="q28" value="b"> Ctrl + T</label>
+                    <label class="option"><input type="radio" name="q28" value="c"> Ctrl + A</label>
+                    <label class="option"><input type="radio" name="q28" value="d"> Ctrl + Shift + A</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>29. Quale comando permette di rimuovere la formattazione mantenendo il testo?</h3>
+                    <label class="option"><input type="radio" name="q29" value="a"> Ctrl + Barra spaziatrice</label>
+                    <label class="option"><input type="radio" name="q29" value="b"> Ctrl + Shift + N</label>
+                    <label class="option"><input type="radio" name="q29" value="c"> Home > Cancella formattazione</label>
+                    <label class="option"><input type="radio" name="q29" value="d"> Tutte le precedenti</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>30. Quale visualizzazione è ottimale per lavorare con documenti master?</h3>
+                    <label class="option"><input type="radio" name="q30" value="a"> Layout di stampa</label>
+                    <label class="option"><input type="radio" name="q30" value="b"> Bozza</label>
+                    <label class="option"><input type="radio" name="q30" value="c"> Struttura</label>
+                    <label class="option"><input type="radio" name="q30" value="d"> Layout Web</label>
+                </div>
+
+                <button type="submit" class="submit-btn">📊 Calcola Risultato</button>
+            </form>
+
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b', q2: 'b', q3: 'b', q4: 'b', q5: 'a',
+            q6: 'c', q7: 'c', q8: 'b', q9: 'b', q10: 'c',
+            q11: 'c', q12: 'c', q13: 'a', q14: 'c', q15: 'b',
+            q16: 'c', q17: 'a', q18: 'c', q19: 'b', q20: 'b',
+            q21: 'b', q22: 'b', q23: 'b', q24: 'b', q25: 'b',
+            q26: 'c', q27: 'b', q28: 'c', q29: 'd', q30: 'c'
+        };
+
+        function calculateResult() {
+            let score = 0;
+            let answered = 0;
+            
+            for (let q in answers) {
+                const selected = document.querySelector('input[name="' + q + '"]:checked');
+                if (selected) {
+                    answered++;
+                    if (selected.value === answers[q]) {
+                        score++;
+                    }
+                }
+            }
+            
+            const resultDiv = document.getElementById('result');
+            const percentage = Math.round((score / 30) * 100);
+            
+            let resultClass = '';
+            let resultText = '';
+            
+            if (percentage >= 90) {
+                resultClass = 'excellent';
+                resultText = '🏆 Eccellente!';
+            } else if (percentage >= 75) {
+                resultClass = 'good';
+                resultText = '👏 Ottimo lavoro!';
+            } else if (percentage >= 60) {
+                resultClass = 'pass';
+                resultText = '✅ Discreto';
+            } else {
+                resultClass = 'fail';
+                resultText = '📚 Continua a studiare';
+            }
+            
+            resultDiv.className = 'result show ' + resultClass;
+            resultDiv.innerHTML = '<div>' + resultText + '</div><div class="score-details">Punteggio: ' + score + '/30 (' + percentage + '%)<br>Domande risposte: ' + answered + '/30</div>';
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateResult();
+        });
+    </script>
+</body>
+</html>
